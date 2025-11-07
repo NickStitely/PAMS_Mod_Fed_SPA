@@ -1,0 +1,26 @@
+<div class="tasks-container">
+  <h2>Tasks</h2>
+  
+  <div class="tasks-grid">
+    <table>
+      <thead>
+        <tr>
+          <th>Task Type</th>
+          <th>Task Name</th>
+          <th>Created Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.type }}</td>
+          <td>{{ task.name }}</td>
+          <td>{{ task.createdDate | date:'MM/dd/yyyy' }}</td>
+          <td>
+            <a href="javascript:void(0)" (click)="editTask(task.id)">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

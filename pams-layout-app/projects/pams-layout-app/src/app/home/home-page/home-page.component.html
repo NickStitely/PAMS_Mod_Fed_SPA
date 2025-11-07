@@ -1,0 +1,45 @@
+<div class="home-page-container">
+  <h2>Welcome</h2>
+  
+  <div class="sections-container">
+    <!-- Left Section - News -->
+    <div class="news-section">
+    <div class="section-header">
+      <h2>Latest News</h2>
+    </div>
+    <div class="news-content">
+      <div class="news-item" *ngFor="let item of newsItems">
+        <div class="news-title">{{ item.title }}</div>
+        <div class="news-date">{{ item.date }}</div>
+        <div class="news-body">{{ item.content }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Section - Weather -->
+  <div class="weather-section">
+    <div class="section-header">
+      <h2>Weather</h2>
+    </div>
+    <div class="weather-content">
+      <div class="current-weather">
+        <div class="location">{{ weatherData.location }}</div>
+        <div class="temp-condition">
+          <span class="temperature">{{ weatherData.currentTemp }}°F</span>
+          <span class="condition">{{ weatherData.condition }}</span>
+        </div>
+      </div>
+      <div class="forecast">
+        <h3>Forecast</h3>
+        <div class="forecast-days">
+          <div class="forecast-day" *ngFor="let day of weatherData.forecast">
+            <div class="day-name">{{ day.day }}</div>
+            <div class="day-temp">{{ day.high }}°F / {{ day.low }}°F</div>
+            <div class="day-condition">{{ day.condition }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

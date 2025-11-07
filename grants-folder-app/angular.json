@@ -1,0 +1,110 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"grants-folder-app": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/grants-folder-app",
+			"sourceRoot": "projects/grants-folder-app/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/grants-folder-app/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/grants-folder-app/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/grants-folder-app/src/styles.scss"
+						],
+						"main": "projects/grants-folder-app/src/main.ts",
+						"outputPath": "dist/grants-folder-app",
+						"index": "projects\\grants-folder-app\\src\\index.html",
+						"extraWebpackConfig": "projects/grants-folder-app/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/grants-folder-app/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "grants-folder-app:build:production",
+							"extraWebpackConfig": "projects/grants-folder-app/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "grants-folder-app:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201,
+						"publicHost": "http://localhost:4201",
+						"extraWebpackConfig": "projects/grants-folder-app/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/grants-folder-app/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/grants-folder-app/public"
+							}
+						],
+						"styles": [
+							"projects/grants-folder-app/src/styles.scss"
+						]
+					}
+				}
+			}
+		}
+	}
+}

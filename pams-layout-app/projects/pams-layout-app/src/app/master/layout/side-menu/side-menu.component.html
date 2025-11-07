@@ -1,0 +1,18 @@
+<div class="side-menu-container">
+  <!-- Menu content - only visible when expanded -->
+  <div class="side-menu" *ngIf="isExpanded">
+    <div class="menu-content">
+      <!-- Menu items will go here -->
+      <div class="menu-item" routerLink="/home" routerLinkActive="active">Home</div>
+      <div class="menu-item" routerLink="/tasks" routerLinkActive="active">Tasks</div>
+      <div class="menu-item">Reports</div>
+      <div class="menu-item">Settings</div>
+    </div>
+  </div>
+  
+  <!-- Toggle button - always visible -->
+  <div class="toggle-button" (click)="toggleMenu()">
+    <span *ngIf="isExpanded">&lt;&lt;</span>
+    <span *ngIf="!isExpanded">&gt;&gt;</span>
+  </div>
+</div>

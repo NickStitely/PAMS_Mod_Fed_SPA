@@ -1,0 +1,110 @@
+{
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"pams-layout-app": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/pams-layout-app",
+			"sourceRoot": "projects/pams-layout-app/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/pams-layout-app/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/pams-layout-app/public",
+								"output": "."
+							}
+						],
+						"styles": [
+							"projects/pams-layout-app/src/styles.scss"
+						],
+						"main": "projects/pams-layout-app/src/main.ts",
+						"outputPath": "dist/pams-layout-app",
+						"index": "projects\\pams-layout-app\\src\\index.html",
+						"extraWebpackConfig": "projects/pams-layout-app/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/pams-layout-app/webpack.prod.config.js"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "pams-layout-app:build:production",
+							"extraWebpackConfig": "projects/pams-layout-app/webpack.prod.config.js"
+						},
+						"development": {
+							"buildTarget": "pams-layout-app:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/pams-layout-app/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular/build:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular/build:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/pams-layout-app/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/pams-layout-app/public"
+							}
+						],
+						"styles": [
+							"projects/pams-layout-app/src/styles.scss"
+						]
+					}
+				}
+			}
+		}
+	}
+}
