@@ -1,0 +1,26 @@
+<div class="grants-site-visits-container">
+  <h2>Site Visits</h2>
+  
+  <div class="site-visits-list">
+    <table class="site-visits-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Inspector</th>
+          <th>Status</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let visit of siteVisits">
+          <td>{{ visit.id }}</td>
+          <td>{{ visit.date }}</td>
+          <td>{{ visit.inspector }}</td>
+          <td>{{ visit.status }}</td>
+          <td>{{ visit.notes }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

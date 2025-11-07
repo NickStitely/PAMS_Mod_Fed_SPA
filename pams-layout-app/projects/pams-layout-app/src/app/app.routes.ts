@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { MasterComponent } from './master/master/master.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,15 @@ export const routes: Routes = [
       {
         path: 'tasks',
         loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule)
+      },
+      {
+        path: 'grants',
+        loadChildren: () => loadRemoteModule({
+          type: 'module',
+          remoteEntry: 'http://localhost:4201/remoteEntry.js',
+          exposedModule: './GrantsModule'
+        })
+        .then(m => m.GrantsModule)
       },
       {
         path: '',
