@@ -6,6 +6,7 @@ import { GrantsRoutingModule } from './grants-routing.module';
 import { GrantsHomeModule } from './grants-home/grants-home.module';
 import { GrantsSiteVisitsModule } from './grants-site-visits/grants-site-visits.module';
 import { GrantsMasterComponent } from './grants-master/grants-master.component';
+import { RegisterUserModule } from '../register-user/register-user.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,10 @@ import { GrantsMasterComponent } from './grants-master/grants-master.component';
     RouterModule,
     GrantsRoutingModule,
     GrantsHomeModule,
-    GrantsSiteVisitsModule
+    GrantsSiteVisitsModule,
+    RegisterUserModule
   ],
   exports: [
-    GrantsHomeModule,
-    GrantsSiteVisitsModule
   ]
 })
 export class GrantsModule { }

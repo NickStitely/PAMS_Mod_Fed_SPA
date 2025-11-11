@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'site-visits',
         loadChildren: () => import('./grants-site-visits/grants-site-visits.module').then(m => m.GrantsSiteVisitsModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('../register-user/register-user.module').then(m => m.RegisterUserModule)
       }
     ]
   }

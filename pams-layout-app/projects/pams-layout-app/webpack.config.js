@@ -3,7 +3,7 @@ const { shareAll, withModuleFederationPlugin } = require('@angular-architects/mo
 module.exports = withModuleFederationPlugin({
 
   remotes: {
-    // The remotes are now handled directly in the route configuration
+    "star-app": "http://localhost:4202/remoteEntry.js"
   },
 
   shared: {

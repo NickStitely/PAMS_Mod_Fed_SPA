@@ -25,6 +25,15 @@ export const routes: Routes = [
         .then(m => m.GrantsModule)
       },
       {
+        path: 'star',
+        loadChildren: () => loadRemoteModule({
+          type: 'module',
+          remoteEntry: 'http://localhost:4202/remoteEntry.js',
+          exposedModule: './StarReportModule'
+        })
+        .then(m => m.StarReportModule)
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
