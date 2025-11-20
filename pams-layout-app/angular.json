@@ -52,13 +52,17 @@
 									"maximumError": "8kB"
 								}
 							],
-							"outputHashing": "all",
+							"optimization": false,
+							"outputHashing": "none",
 							"extraWebpackConfig": "projects/pams-layout-app/webpack.prod.config.js"
+							
 						},
 						"development": {
 							"optimization": false,
+							"outputHashing": "none",
 							"extractLicenses": false,
-							"sourceMap": true
+							"sourceMap": true,
+							"namedChunks": true
 						}
 					},
 					"defaultConfiguration": "production"
@@ -68,10 +72,12 @@
 					"configurations": {
 						"production": {
 							"buildTarget": "pams-layout-app:build:production",
-							"extraWebpackConfig": "projects/pams-layout-app/webpack.prod.config.js"
+							"extraWebpackConfig": "projects/pams-layout-app/webpack.prod.config.js",
+							"optimization": false,
+							"outputHashing": false
 						},
 						"development": {
-							"buildTarget": "pams-layout-app:build:development"
+							"buildTarget": "pams-layout-app:build:development",
 						}
 					},
 					"defaultConfiguration": "development",

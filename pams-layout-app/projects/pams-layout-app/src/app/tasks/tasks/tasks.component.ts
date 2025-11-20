@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '@NickStitely/my-lib';
+//import { UserService } from '@NickStitely/my-lib';
+//import '@NickStitely/my-lib';
+
 
 interface Task {
   id: number;
@@ -17,7 +19,10 @@ interface Task {
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
 
-  constructor(public userService: UserService) { }
+  userService = {
+    unique_id: "1"
+  }
+  //constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.generateTasks();
